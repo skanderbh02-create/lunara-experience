@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNARA Experience — Where the Moon Meets Music</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5E6B8;
+  --gold-dark: #8B6914;
+  --black: #050505;
+  --black-soft: #0D0D0D;
+  --black-card: #111111;
+  --black-border: #1E1E1E;
+  --white: #FDFAF2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, transparent 100%);
+  transition: background 0.4s;
+}
+nav.scrolled {
+  background: rgba(5,5,5,0.98);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(253,250,242,0.5);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 7rem 2rem 5rem;
+}
+.hero-bg-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.06);
+  animation: pulse-ring 8s ease-in-out infinite;
+}
+.ring:nth-child(1) { width: 400px; height: 400px; }
+.ring:nth-child(2) { width: 650px; height: 650px; animation-delay: 1.5s; border-color: rgba(201,168,76,0.04); }
+.ring:nth-child(3) { width: 900px; height: 900px; animation-delay: 3s; border-color: rgba(201,168,76,0.025); }
+.ring:nth-child(4) { width: 1150px; height: 1150px; animation-delay: 4.5s; border-color: rgba(201,168,76,0.015); }
+@keyframes pulse-ring {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.6; }
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  animation: fade-up 1.5s ease-out both;
+}
+.hero-logo img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 35px rgba(201,168,76,0.35));
+}
+.hero-eyebrow {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 0.2s ease-out both;
+}
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 0.4s ease-out both;
+}
+.hero-title .gold-text {
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: rgba(253,250,242,0.6);
+  margin: 1.5rem 0 0.5rem;
+  letter-spacing: 0.05em;
+  max-width: 580px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 0.6s ease-out both;
+}
+.hero-fomo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin: 0.8rem 0 1.5rem;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 0.7s ease-out both;
+}
+.coming-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 0.5rem 1.8rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 0.8s ease-out both;
+}
+
+/* COUNTDOWN */
+.countdown-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.5rem;
+  animation: fade-up 1.5s 0.9s ease-out both;
+}
+.countdown-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(253,250,242,0.4);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+.countdown {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+.countdown > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.countdown span {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  background: linear-gradient(180deg, var(--gold-pale), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+}
+.countdown small {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+}
+.countdown-sep {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: rgba(201,168,76,0.3);
+  padding-bottom: 0.6rem;
+  align-self: flex-end;
+}
+
+.btn-moonlist {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  padding: 1rem 2.8rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 1s ease-out both;
+}
+.btn-moonlist:hover {
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold-light));
+  box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+  transform: translateY(-2px);
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fade-up 1.5s 1.2s ease-out both;
+}
+.hero-pill {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(253,250,242,0.4);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SLOGAN STRIP */
+.slogan-strip {
+  overflow: hidden;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 1.1rem 0;
+  background: var(--black-soft);
+}
+.slogan-track {
+  display: flex;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+.slogan-item {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.45);
+  padding: 0 2.5rem;
+  white-space: nowrap;
+}
+.slogan-item::after { content: ' ◆ '; color: rgba(201,168,76,0.2); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* SHARED */
+section { position: relative; z-index: 1; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+.section-label {
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.section-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.95;
+  color: rgba(253,250,242,0.58);
+  max-width: 640px;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 220px;
+  margin: 3rem auto;
+}
+.gold-divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent); }
+.gold-divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+/* CONCEPT */
+#concept { background: var(--black-soft); border-top: 1px solid var(--black-border); border-bottom: 1px solid var(--black-border); }
+#concept .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.concept-deco { position: relative; display: flex; align-items: center; justify-content: center; }
+.concept-deco img {
+  width: 260px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 40px rgba(201,168,76,0.25));
+  animation: float 6s ease-in-out infinite;
+}
+.concept-deco::before {
+  content: '';
+  position: absolute;
+  width: 310px; height: 310px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.1);
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+/* MANIFESTO */
+#manifesto { background: var(--black); }
+#manifesto .section-inner { max-width: 780px; text-align: center; }
+.manifesto-lines { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.manifesto-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  color: rgba(253,250,242,0.55);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.5rem;
+  text-align: left;
+}
+.manifesto-line::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-style: normal;
+}
+.manifesto-finale {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-top: 2.5rem;
+}
+
+/* UNIVERSE */
+#universe { background: var(--black-soft); border-top: 1px solid var(--black-border); }
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  margin-top: 3.5rem;
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.07);
+}
+.universe-card {
+  background: var(--black-card);
+  padding: 2.5rem 1.8rem;
+  text-align: center;
+  transition: background 0.4s;
+}
+.universe-card:hover { background: #161410; }
+.universe-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.universe-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+.universe-card-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(253,250,242,0.45);
+}
+
+/* COMING */
+#coming { background: var(--black); border-top: 1px solid var(--black-border); text-align: center; }
+#coming .section-inner { max-width: 680px; }
+.coming-items { display: inline-flex; flex-direction: column; gap: 0.8rem; text-align: left; margin: 2rem 0; }
+.coming-item { display: flex; align-items: center; gap: 1rem; font-size: 0.82rem; letter-spacing: 0.12em; color: rgba(253,250,242,0.5); }
+.coming-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* GALLERY */
+#gallery { background: var(--black-soft); border-top: 1px solid var(--black-border); }
+#gallery .section-inner { text-align: center; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  margin-top: 3rem;
+}
+.gallery-cell {
+  aspect-ratio: 3/4;
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s;
+  cursor: default;
+}
+.gallery-cell:hover { border-color: rgba(201,168,76,0.25); background: #0E0C09; }
+.gallery-cell:nth-child(1) { background: linear-gradient(160deg, #0a0a0a, #161208); }
+.gallery-cell:nth-child(2) { background: linear-gradient(160deg, #0d0b08, #0a0a0a); }
+.gallery-cell:nth-child(3) { background: linear-gradient(160deg, #0a0a0a, #100e0a); }
+.gallery-cell:nth-child(4) { background: linear-gradient(160deg, #0e0c09, #0a0a0a); }
+.gallery-cell:nth-child(5) { background: linear-gradient(160deg, #0a0a0a, #120f08); }
+.gallery-emoji { font-size: 2.5rem; opacity: 0.7; }
+.gallery-caption {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.4);
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(201,168,76,0.06), transparent);
+}
+
+/* LIMITED ACCESS */
+#limited { background: var(--black); border-top: 1px solid var(--black-border); }
+#limited .section-inner { max-width: 900px; }
+.limited-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+.limited-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.limited-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(201,168,76,0.1);
+  background: var(--black-card);
+  transition: border-color 0.3s;
+}
+.limited-item:hover { border-color: rgba(201,168,76,0.3); }
+.limited-item-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+.limited-item-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: rgba(253,250,242,0.6); }
+.limited-item-text strong { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); display: block; margin-bottom: 0.3rem; font-weight: 400; text-transform: uppercase; }
+.limited-cta { text-align: center; }
+.limited-cta .section-title { font-size: clamp(1.4rem, 3vw, 2.2rem); }
+.limited-cta .section-body { margin: 0 auto 2rem; }
+
+/* WHY */
+#why { background: var(--black-soft); border-top: 1px solid var(--black-border); }
+.why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 3.5rem; background: rgba(201,168,76,0.05); }
+.why-card { background: var(--black-card); padding: 2.5rem; border-left: 2px solid transparent; transition: all 0.4s; }
+.why-card:hover { background: #0E0C09; border-left-color: var(--gold); }
+.why-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(201,168,76,0.12); line-height: 1; margin-bottom: 1rem; }
+.why-card-title { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.6rem; }
+.why-card-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.7; color: rgba(253,250,242,0.5); }
+
+/* SOCIAL */
+#social { background: var(--black); border-top: 1px solid var(--black-border); text-align: center; }
+#social .section-inner { max-width: 620px; }
+.social-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 2rem;
+  border: 1px solid rgba(201,168,76,0.12);
+  background: var(--black-card);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.social-link:hover { border-color: rgba(201,168,76,0.35); background: #0E0C09; }
+.social-link-icon { font-size: 1.3rem; }
+.social-link-info { text-align: left; }
+.social-link-name { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.2rem; }
+.social-link-handle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: rgba(253,250,242,0.5); }
+.social-link-arrow { margin-left: auto; color: rgba(201,168,76,0.4); font-size: 1rem; }
+
+/* INSCRIPTION */
+#inscription { background: var(--black-soft); border-top: 1px solid var(--black-border); text-align: center; }
+#inscription .section-inner { max-width: 560px; }
+.form-subtext {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(253,250,242,0.45);
+  line-height: 1.7;
+  margin: 0 auto 2.5rem;
+}
+.form-group { margin-bottom: 1rem; }
+.form-group input {
+  width: 100%;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(201,168,76,0.18);
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  padding: 1rem 1.2rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input::placeholder { color: rgba(253,250,242,0.2); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.6rem; }
+.form-group input:focus { border-color: var(--gold); background: rgba(201,168,76,0.03); }
+.form-submit { width: 100%; margin-top: 0.5rem; }
+.no-spam { display: block; margin-top: 1.2rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.82rem; color: rgba(253,250,242,0.25); letter-spacing: 0.08em; }
+#success-msg { display:none; margin-top:1.5rem; padding: 1.5rem; border: 1px solid rgba(201,168,76,0.25); background: rgba(201,168,76,0.04); }
+#success-msg p { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); letter-spacing: 0.06em; font-size: 1rem; line-height: 1.7; }
+
+/* FINALE */
+#finale {
+  background: var(--black);
+  border-top: 1px solid var(--black-border);
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+#finale::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+}
+.finale-tagline {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+  margin-bottom: 1.5rem;
+}
+.finale-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+.finale-sub {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: rgba(253,250,242,0.15);
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* FOOTER */
+footer {
+  background: var(--black-soft);
+  border-top: 1px solid var(--black-border);
+  padding: 3.5rem 2rem 2rem;
+  text-align: center;
+}
+.footer-logo { width: 60px; opacity: 0.65; margin: 0 auto 1.2rem; display: block; filter: drop-shadow(0 0 12px rgba(201,168,76,0.2)); }
+.footer-brand { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.35em; color: var(--gold); margin-bottom: 0.3rem; }
+.footer-tagline-sm { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.85rem; color: rgba(253,250,242,0.25); margin-bottom: 2rem; }
+.footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(253,250,242,0.3); text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.58rem; letter-spacing: 0.18em; color: rgba(253,250,242,0.15); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  #concept .section-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .concept-deco { order: -1; }
+  .universe-grid { grid-template-columns: repeat(2,1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .limited-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .gallery-grid { grid-template-columns: repeat(3,1fr); }
+  .gallery-cell:nth-child(4), .gallery-cell:nth-child(5) { display: none; }
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .universe-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .gallery-cell:nth-child(3) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">LUNARA</a>
+  <ul class="nav-links">
+    <li><a href="#concept">Concept</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#limited">Access</a></li>
+    <li><a href="#social">Follow</a></li>
+    <li><a href="#inscription">Moonlist</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+
+  <div class="hero-logo">
+    <img id="hero-logo-img" src="" alt="LUNARA Experience">
+  </div>
+
+  <span class="hero-eyebrow">Une expérience nocturne immersive</span>
+
+  <h1 class="hero-title">
+    <span class="gold-text">LUNARA</span>
+    EXPERIENCE
+  </h1>
+
+  <p class="hero-tagline">
+    An exclusive night where music, mystery<br>and human connection become one.
+  </p>
+
+  <p class="hero-fomo">Not everyone will be invited. Make sure you're on the list.</p>
+
+  <div class="coming-badge">✦ Coming Soon ✦</div>
+
+  <div class="countdown-wrap">
+    <div class="countdown-label">The first chapter begins soon.</div>
+    <div class="countdown">
+      <div><span id="cd-days">00</span><small>Days</small></div>
+      <div class="countdown-sep">:</div>
+      <div><span id="cd-hours">00</span><small>Hours</small></div>
+      <div class="countdown-sep">:</div>
+      <div><span id="cd-minutes">00</span><small>Minutes</small></div>
+      <div class="countdown-sep">:</div>
+      <div><span id="cd-seconds">00</span><small>Seconds</small></div>
+    </div>
+  </div>
+
+  <a href="#inscription" class="btn-moonlist">🌙 Join The Moonlist</a>
+
+  <div class="hero-pills">
+    <span class="hero-pill">✨ Éditions exclusives</span>
+    <span class="hero-pill">🌙 Univers premium</span>
+    <span class="hero-pill">🎵 Musique &amp; émotions</span>
+    <span class="hero-pill">🤍 Communauté sélective</span>
+  </div>
+</section>
+
+<!-- SLOGAN STRIP -->
+<div class="slogan-strip">
+  <div class="slogan-track">
+    <span class="slogan-item">Where The Moon Meets Music</span>
+    <span class="slogan-item">Experience The Night</span>
+    <span class="slogan-item">Beyond The Ordinary</span>
+    <span class="slogan-item">Feel The Moonlight</span>
+    <span class="slogan-item">A Night To Remember</span>
+    <span class="slogan-item">Music. Emotion. Connection.</span>
+    <span class="slogan-item">The Night Has A New Name.</span>
+    <span class="slogan-item">Not Just An Event. An Experience.</span>
+    <span class="slogan-item">Enter The LUNARA Universe</span>
+    <span class="slogan-item">Where The Moon Meets Music</span>
+    <span class="slogan-item">Experience The Night</span>
+    <span class="slogan-item">Beyond The Ordinary</span>
+    <span class="slogan-item">Feel The Moonlight</span>
+    <span class="slogan-item">A Night To Remember</span>
+    <span class="slogan-item">Music. Emotion. Connection.</span>
+    <span class="slogan-item">The Night Has A New Name.</span>
+    <span class="slogan-item">Not Just An Event. An Experience.</span>
+    <span class="slogan-item">Enter The LUNARA Universe</span>
+  </div>
+</div>
+
+<!-- LE CONCEPT -->
+<section id="concept">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Le Concept</span>
+      <h2 class="section-title">Plus qu'un événement.</h2>
+      <p class="section-body">
+        LUNARA Experience est un concept événementiel premium inspiré par la magie de la nuit.
+        <br><br>
+        Née de la rencontre entre la musique, l'esthétique et les émotions humaines, chaque édition est pensée comme une parenthèse hors du temps.
+        <br><br>
+        Sous le symbole de la lune, nous créons des espaces où les inconnus deviennent une communauté, où la musique devient un langage universel et où chaque instant devient un souvenir.
+      </p>
+    </div>
+    <div class="concept-deco reveal">
+      <img id="concept-logo-img" src="" alt="LUNARA Moon">
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="section-inner reveal">
+    <span class="section-label" style="text-align:center; display:block;">Notre Vision</span>
+    <h2 class="section-title" style="text-align:center;">The LUNARA Manifesto.</h2>
+    <div class="gold-divider"><div class="gold-divider-line"></div><div class="gold-divider-diamond"></div><div class="gold-divider-line"></div></div>
+    <div class="manifesto-lines">
+      <p class="manifesto-line">We believe nights should be remembered.</p>
+      <p class="manifesto-line">We believe music should be felt, not only heard.</p>
+      <p class="manifesto-line">We believe strangers can become memories.</p>
+      <p class="manifesto-line">We believe the moon has always brought people together.</p>
+    </div>
+    <div class="manifesto-finale">Welcome to LUNARA.</div>
+  </div>
+</section>
+
+<!-- NOTRE UNIVERS -->
+<section id="universe">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label" style="display:block; text-align:center;">Notre Univers</span>
+      <h2 class="section-title" style="text-align:center;">Quatre piliers.</h2>
+    </div>
+    <div class="universe-grid reveal">
+      <div class="universe-card">
+        <span class="universe-icon">🌙</span>
+        <div class="universe-card-title">La Lune</div>
+        <p class="universe-card-body">Symbole de mystère, de rêve et de transformation.</p>
+      </div>
+      <div class="universe-card">
+        <span class="universe-icon">🎵</span>
+        <div class="universe-card-title">La Musique</div>
+        <p class="universe-card-body">Une énergie qui rassemble et crée des émotions inoubliables.</p>
+      </div>
+      <div class="universe-card">
+        <span class="universe-icon">🎨</span>
+        <div class="universe-card-title">L'Art</div>
+        <p class="universe-card-body">Une identité visuelle élégante et immersive.</p>
+      </div>
+      <div class="universe-card">
+        <span class="universe-icon">🤍</span>
+        <div class="universe-card-title">La Communauté</div>
+        <p class="universe-card-body">Des personnes qui partagent la même passion pour les expériences uniques.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUI ARRIVE -->
+<section id="coming">
+  <div class="section-inner reveal">
+    <span class="section-label" style="display:block; text-align:center;">Ce Qui Arrive</span>
+    <h2 class="section-title">Quelque chose se prépare.</h2>
+    <p class="section-body" style="margin: 0 auto; text-align:center;">
+      La première édition de LUNARA approche.<br>
+      Une nuit. Une ambiance. Une énergie.<br>
+      Une expérience que vous n'oublierez jamais.
+    </p>
+    <div style="display:flex; justify-content:center;">
+      <div class="coming-items">
+        <div class="coming-item"><span class="coming-dot"></span>📍 Lieu bientôt dévoilé</div>
+        <div class="coming-item"><span class="coming-dot"></span>📅 Date bientôt annoncée</div>
+        <div class="coming-item"><span class="coming-dot"></span>🎟 Places limitées</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY TEASER -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label" style="display:block; text-align:center;">Aperçu</span>
+      <h2 class="section-title">A Glimpse Into The Night.</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-cell">
+        <div class="gallery-overlay"></div>
+        <span class="gallery-emoji">🌕</span>
+        <span class="gallery-caption">Moonlight</span>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-overlay"></div>
+        <span class="gallery-emoji">✨</span>
+        <span class="gallery-caption">The Crowd</span>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-overlay"></div>
+        <span class="gallery-emoji">🎧</span>
+        <span class="gallery-caption">The Sound</span>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-overlay"></div>
+        <span class="gallery-emoji">🕯</span>
+        <span class="gallery-caption">The Ambiance</span>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-overlay"></div>
+        <span class="gallery-emoji">🥂</span>
+        <span class="gallery-caption">Premium</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITED ACCESS -->
+<section id="limited">
+  <div class="section-inner">
+    <div class="limited-grid">
+      <div class="reveal">
+        <span class="section-label">Membership</span>
+        <h2 class="section-title">Membership Has<br>Its Privileges.</h2>
+        <p class="section-body">Only Moonlist members will receive access to the most exclusive moments LUNARA has to offer.</p>
+      </div>
+      <div class="limited-list reveal">
+        <div class="limited-item">
+          <span class="limited-item-icon">🎟</span>
+          <div class="limited-item-text">
+            <strong>Early Access Tickets</strong>
+            Be the first to secure your place before the public announcement.
+          </div>
+        </div>
+        <div class="limited-item">
+          <span class="limited-item-icon">📍</span>
+          <div class="limited-item-text">
+            <strong>Secret Location Reveals</strong>
+            The venue is only shared with Moonlist members 48h before the event.
+          </div>
+        </div>
+        <div class="limited-item">
+          <span class="limited-item-icon">📣</span>
+          <div class="limited-item-text">
+            <strong>Exclusive Announcements</strong>
+            Artists, surprises, and details — before anyone else knows.
+          </div>
+        </div>
+        <div class="limited-item">
+          <span class="limited-item-icon">🤍</span>
+          <div class="limited-item-text">
+            <strong>Private Invitations</strong>
+            Access to special events and experiences reserved for the community.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI REJOINDRE -->
+<section id="why">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Pourquoi Rejoindre</span>
+      <h2 class="section-title">L'univers LUNARA.</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-number">01</div>
+        <div class="why-card-title">Accès Prioritaire</div>
+        <p class="why-card-body">Soyez parmi les premiers informés. Chaque annonce, chaque surprise — vous la recevez en premier.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">02</div>
+        <div class="why-card-title">Éditions Exclusives</div>
+        <p class="why-card-body">Recevez les annonces avant tout le monde. L'exclusivité est notre promesse.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">03</div>
+        <div class="why-card-title">Invitations Privées</div>
+        <p class="why-card-body">Accès à des événements et expériences réservés à la communauté LUNARA.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">04</div>
+        <div class="why-card-title">Communauté</div>
+        <p class="why-card-body">Rejoignez l'univers LUNARA dès maintenant. Faites partie de quelque chose d'unique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <div class="section-inner reveal">
+    <span class="section-label" style="display:block; text-align:center;">Follow The Journey</span>
+    <h2 class="section-title" style="text-align:center;">Rejoins l'univers.</h2>
+    <p class="section-body" style="margin: 0 auto 0; text-align:center;">
+      Suis LUNARA sur les réseaux pour ne manquer aucune annonce, aucun teaser, aucune surprise.
+    </p>
+    <div class="social-links">
+      <a class="social-link" href="https://instagram.com/lunara__tn" target="_blank">
+        <span class="social-link-icon">📸</span>
+        <div class="social-link-info">
+          <div class="social-link-name">Instagram</div>
+          <div class="social-link-handle">@lunara__tn</div>
+        </div>
+        <span class="social-link-arrow">→</span>
+      </a>
+      <a class="social-link" href="https://tiktok.com/@lunara_experience" target="_blank">
+        <span class="social-link-icon">🎵</span>
+        <div class="social-link-info">
+          <div class="social-link-name">TikTok</div>
+          <div class="social-link-handle">@lunara_experience</div>
+        </div>
+        <span class="social-link-arrow">→</span>
+      </a>
+      <a class="social-link" href="tel:+21695648333">
+        <span class="social-link-icon">📞</span>
+        <div class="social-link-info">
+          <div class="social-link-name">Contact</div>
+          <div class="social-link-handle">+216 95 648 333</div>
+        </div>
+        <span class="social-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section id="inscription">
+  <div class="section-inner reveal">
+    <span class="section-label" style="display:block; text-align:center;">Rejoindre</span>
+    <h2 class="section-title">La Moonlist.</h2>
+    <p class="form-subtext">
+      Join the Moonlist and become one of the first people to experience LUNARA.<br>
+      Limited invitations. Exclusive announcements. No spam.
+    </p>
+    <form id="moonlist-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <input type="text" id="prenom" placeholder="Prénom" required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" placeholder="Email" required autocomplete="off">
+      </div>
+      <button type="submit" class="btn-moonlist form-submit">🌙 Join The Moonlist</button>
+    </form>
+    <span class="no-spam">No spam. Only moonlight.</span>
+    <div id="success-msg">
+      <p>✦ You are now part of the first circle.<br>More details will be revealed under the moonlight. ✦</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<div id="finale" class="reveal">
+  <p class="finale-tagline">The Night Has A New Name.</p>
+  <div class="finale-title">LUNARA</div>
+  <div class="finale-sub">EXPERIENCE</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img id="footer-logo-img" src="" alt="LUNARA" class="footer-logo">
+  <div class="footer-brand">LUNARA Experience</div>
+  <div class="footer-tagline-sm">Where the Moon Meets Music.</div>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com/lunara__tn" target="_blank">Instagram</a></li>
+    <li><a href="https://tiktok.com/@lunara_experience" target="_blank">TikTok</a></li>
+    <li><a href="tel:+21695648333">+216 95 648 333</a></li>
+    <li><a href="#inscription">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 LUNARA Experience. All Rights Reserved.</div>
+</footer>
+
+<script>
+  const LOGO_B64 = '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';
+  const logoSrc = 'data:image/jpeg;base64,' + LOGO_B64;
+  document.getElementById('hero-logo-img').src = logoSrc;
+  document.getElementById('concept-logo-img').src = logoSrc;
+  document.getElementById('footer-logo-img').src = logoSrc;
+
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Countdown — target date: 21 September 2026
+  const target = new Date('2026-09-21T21:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-minutes').textContent = '00';
+      document.getElementById('cd-seconds').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Form
+  const APPS_SCRIPT_URL = 'COLLE_TON_URL_ICI';
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.innerHTML = '🌙 En cours...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prenom: document.getElementById('prenom').value,
+          email: document.getElementById('email').value
+        })
+      });
+    } catch(err) { console.error(err); }
+    document.getElementById('moonlist-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
